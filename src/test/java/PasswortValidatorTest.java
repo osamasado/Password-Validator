@@ -197,4 +197,17 @@ class PasswortValidatorTest {
         assertTrue(actual);
     }
 
+    // =========== isValid() ===========================
+    @Test
+    void isValid_shouldReturnFalse_whenCalledWithNull() {
+        assertFalse(PasswortValidator.isValid(null));
+    }
+
+    @Test
+    void isValid_shouldReturnFalse_whenCalledWithEmptyString() {
+        String pass = "";
+        boolean actual = PasswortValidator.isValid(pass);
+        assertFalse(actual);
+    }
+
 }

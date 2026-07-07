@@ -81,6 +81,12 @@ public final class PasswortValidator {
     }
 
     public static boolean isValid(String password) {
+        boolean isNullOrEmpty = isNullOrEmpty(password);
+
+        if (isNullOrEmpty) {
+            return false;
+        }
+
         return true;
     }
 
