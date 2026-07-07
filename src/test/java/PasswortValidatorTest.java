@@ -51,4 +51,11 @@ class PasswortValidatorTest {
         assertFalse(actual);
     }
 
+    @Test
+    void containsDigit_shouldReturnTrue_whenCalledWithOneDigit() {
+        String pass = "1";
+        boolean actual = PasswortValidator.containsDigit(pass);
+        assertTrue(actual);
+    }
+
 }

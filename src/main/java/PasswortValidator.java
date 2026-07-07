@@ -11,7 +11,13 @@ public final class PasswortValidator {
         if(password == null || password.isEmpty()) {
             return false;
         }
+        String[] digits = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
+        for (String digit : digits) {
+            if(password.contains(digit)) {
+                return true;
+            }
+        }
         return false;
     }
     public static boolean containsUpperAndLower(String password) {
