@@ -66,8 +66,15 @@ class PasswortValidatorTest {
     }
 
     @Test
-    void containsDigit_shouldReturnFalse_whenCalledWithMoreOneDigit() {
+    void containsDigit_shouldReturnTrue_whenCalledWithMoreOneDigit() {
         String pass = "12345";
+        boolean actual = PasswortValidator.containsDigit(pass);
+        assertTrue(actual);
+    }
+
+    @Test
+    void containsDigit_shouldReturnTrue_whenCalledWithMixOfChars() {
+        String pass = "Osama1xx2yy34Sado";
         boolean actual = PasswortValidator.containsDigit(pass);
         assertTrue(actual);
     }
