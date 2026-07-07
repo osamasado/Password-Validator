@@ -152,4 +152,11 @@ class PasswortValidatorTest {
         assertTrue(actual);
     }
 
+    @Test
+    void isCommonPassword_shouldReturnFalse_whenCalledWithPasswordInBlackListButUpperCase() {
+        String pass = "PASSWORD";
+        boolean actual = PasswortValidator.isCommonPassword(pass);
+        assertFalse(actual);
+    }
+
 }
