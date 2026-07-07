@@ -70,7 +70,14 @@ public final class PasswortValidator {
     }
 
     public static boolean containsSpecialChar(String password, String allowedChars) {
-        return true;
+        char[] passwordChars = password.toCharArray();
+
+        for (char chr : passwordChars) {
+            if(allowedChars.contains(String.valueOf(chr))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static boolean isValid(String password) {

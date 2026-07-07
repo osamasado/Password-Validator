@@ -179,4 +179,22 @@ class PasswortValidatorTest {
         assertFalse(actual);
     }
 
+    // =========== containsSpecialChar() ===========================
+
+    @Test
+    void containsSpecialChar_shouldReturnFalse_whenCalledWithPasswordHasNoSpecialChar() {
+        String pass = "test";
+        String allowedChars = "#$%&(){}*+";
+        boolean actual = PasswortValidator.containsSpecialChar(pass, allowedChars);
+        assertFalse(actual);
+    }
+
+    @Test
+    void containsSpecialChar_shouldReturnTrue_whenCalledWithPasswordHasAtLeastOneSpecialChar() {
+        String pass = "test#";
+        String allowedChars = "#$%&(){}*+";
+        boolean actual = PasswortValidator.containsSpecialChar(pass, allowedChars);
+        assertTrue(actual);
+    }
+
 }
