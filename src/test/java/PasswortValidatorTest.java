@@ -4,11 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PasswortValidatorTest {
 
+    // =========== hasMinLength() ===========================
     @Test
     void hasMinLength_shouldReturnFalse_whenCalledWithNull() {
-        String pass = null;
-        boolean actual = PasswortValidator.hasMinLength(pass, 8);
-        assertFalse(actual);
+        assertFalse(PasswortValidator.hasMinLength(null, 8));
     }
 
     @Test
@@ -38,4 +37,18 @@ class PasswortValidatorTest {
         boolean actual = PasswortValidator.hasMinLength(pass, 8);
         assertTrue(actual);
     }
+
+    // =========== containsDigit() ===========================
+    @Test
+    void containsDigit_shouldReturnFalse_whenCalledWithNull() {
+        assertFalse(PasswortValidator.containsDigit(null));
+    }
+
+    @Test
+    void containsDigit_shouldReturnFalse_whenCalledWithEmptyString() {
+        String pass = "";
+        boolean actual = PasswortValidator.containsDigit(pass);
+        assertFalse(actual);
+    }
+
 }

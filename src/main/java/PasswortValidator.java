@@ -8,7 +8,11 @@ public final class PasswortValidator {
     }
 
     public static boolean containsDigit(String password) {
-        return true;
+        if(password == null || password.isEmpty()) {
+            return false;
+        }
+
+        return false;
     }
     public static boolean containsUpperAndLower(String password) {
         return true;
