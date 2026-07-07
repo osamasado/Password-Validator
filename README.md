@@ -26,4 +26,4 @@ The following rules can be applied as additional security requirements:
 
 - ⭐ **Mindestens ein Sonderzeichen**
     - The password must contain at least one special character.
-    - Allowed special characters must be defined, for example:
+    - Allowed special characters must be defined, for example: `#$%&(){}*+`

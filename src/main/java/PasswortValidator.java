@@ -135,7 +135,7 @@ public final class PasswortValidator {
         if(isCommonPassword) {
             result.addReason("Password is too weak!");
         }
-        boolean containsSpecialChar = containsSpecialChar(password, "#$%&(){}*+");
+        boolean containsSpecialChar = containsSpecialChar(password, " #$%&(){}*+");
         if(!containsSpecialChar) {
             result.addReason("Password must contain at least one special character form :" + "#$%&(){}*+");
         }
