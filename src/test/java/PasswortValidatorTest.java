@@ -106,4 +106,11 @@ class PasswortValidatorTest {
         assertTrue(actual);
     }
 
+    @Test
+    void containsUpperAndLower_shouldReturnTrue_whenCalledWithStringContainsMoreThanOneUppers() {
+        String pass = "oSamA";
+        boolean actual = PasswortValidator.containsUpperAndLower(pass);
+        assertTrue(actual);
+    }
+
 }
