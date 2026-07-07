@@ -159,4 +159,24 @@ class PasswortValidatorTest {
         assertFalse(actual);
     }
 
+    // =========== isNullOrEmpty() ===========================
+    @Test
+    void isNullOrEmpty_shouldReturnTrue_whenCalledWithNull() {
+        assertTrue(PasswortValidator.isNullOrEmpty(null));
+    }
+
+    @Test
+    void isNullOrEmpty_shouldReturnTrue_whenCalledWithEmptyString() {
+        String pass = "";
+        boolean actual = PasswortValidator.isNullOrEmpty(pass);
+        assertTrue(actual);
+    }
+
+    @Test
+    void isNullOrEmpty_shouldReturnFalse_whenCalledWithNotEmptyString() {
+        String pass = "test";
+        boolean actual = PasswortValidator.isNullOrEmpty(pass);
+        assertFalse(actual);
+    }
+
 }

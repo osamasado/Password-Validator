@@ -4,14 +4,14 @@ import java.util.Locale;
 public final class PasswortValidator {
     public static boolean hasMinLength(String password, int min) {
 
-        if(password == null || password.isEmpty()) {
+        if(isNullOrEmpty(password)) {
             return false;
         }
         return password.length() >= min;
     }
 
     public static boolean containsDigit(String password) {
-        if(password == null || password.isEmpty()) {
+        if(isNullOrEmpty(password)) {
             return false;
         }
         String[] digits = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
@@ -24,7 +24,7 @@ public final class PasswortValidator {
         return false;
     }
     public static boolean containsUpperAndLower(String password) {
-        if(password == null || password.isEmpty()) {
+        if(isNullOrEmpty(password)) {
             return false;
         }
         char[] passwordChars = password.toCharArray();
@@ -41,7 +41,7 @@ public final class PasswortValidator {
         return hasUpper && hasLower;
     }
     public static boolean isCommonPassword(String password) {
-        if(password == null || password.isEmpty()) {
+        if(isNullOrEmpty(password)) {
             return false;
         }
 
@@ -75,6 +75,11 @@ public final class PasswortValidator {
 
     public static boolean isValid(String password) {
         return true;
+    }
+
+
+    public static boolean isNullOrEmpty(String password) {
+        return password == null || password.isEmpty();
     }
 
 
