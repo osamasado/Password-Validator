@@ -24,6 +24,12 @@ public final class PasswortValidator {
         if(password == null || password.isEmpty()) {
             return false;
         }
+        char[] passwordChars = password.toCharArray();
+        for (char chr : passwordChars) {
+            if (Character.isUpperCase(chr)) {
+                return true;
+            }
+        }
         return false;
     }
     public static boolean isCommonPassword(String password) {
