@@ -3,6 +3,11 @@ name: Java CI with Maven
 on:
   push:
 
+permissions:
+  contents: write
+  security-events: write
+  actions: read
+
 jobs:
   build:
 
