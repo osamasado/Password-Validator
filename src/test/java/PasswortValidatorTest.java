@@ -139,5 +139,17 @@ class PasswortValidatorTest {
         boolean actual = PasswortValidator.isCommonPassword(pass);
         assertFalse(actual);
     }
+    @Test
+    void isCommonPassword_shouldReturnFalse_whenCalledWithWeakPassword() {
+        String pass = "iloveyou";
+        boolean actual = PasswortValidator.isCommonPassword(pass);
+        assertFalse(actual);
+    }
+    @Test
+    void isCommonPassword_shouldReturnTrue_whenCalledWithPasswordNotInBlackList() {
+        String pass = "iloveyouJava";
+        boolean actual = PasswortValidator.isCommonPassword(pass);
+        assertTrue(actual);
+    }
 
 }

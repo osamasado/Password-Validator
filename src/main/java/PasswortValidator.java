@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.Locale;
+
 public final class PasswortValidator {
     public static boolean hasMinLength(String password, int min) {
 
@@ -41,7 +44,29 @@ public final class PasswortValidator {
         if(password == null || password.isEmpty()) {
             return false;
         }
-        return false;
+
+        List<String> weakPasswords = List.of(
+                "password",
+                "Passwort1",
+                "Aa345678",
+                "123456",
+                "12345678",
+                "qwerty",
+                "abc123",
+                "password1",
+                "admin",
+                "letmein",
+                "welcome",
+                "iloveyou"
+        );
+
+        for(String pass : weakPasswords) {
+            if(password.trim().toLowerCase().compareTo(pass.toLowerCase()) == 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public static boolean containsSpecialChar(String password, String allowedChars) {
