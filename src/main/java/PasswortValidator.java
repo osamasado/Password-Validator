@@ -1,5 +1,4 @@
 import java.util.List;
-import java.util.Locale;
 
 public final class PasswortValidator {
     public static boolean hasMinLength(String password, int min) {
@@ -89,6 +88,37 @@ public final class PasswortValidator {
         boolean containsSpecialChar = containsSpecialChar(password, "#$%&(){}*+");
 
         return !isNullOrEmpty && hasMinLength && containsDigit && containsUpperAndLower && !isCommonPassword && containsSpecialChar;
+    }
+
+    public static ValidationResult validatePassword(String password) {
+        ValidationResult result = new ValidationResult();
+
+        boolean isNullOrEmpty = isNullOrEmpty(password);
+        if(isNullOrEmpty) {
+            result.addReason("Password can not be null or empty.");
+        }
+        boolean hasMinLength = hasMinLength(password, 8);
+        if(!hasMinLength) {
+            result.addReason("Password must be at least " + 8 + " characters long.");
+        }
+        boolean containsDigit = containsDigit(password);
+        if(!containsDigit) {
+            result.addReason("Password must contain at least one digit.");
+        }
+        boolean containsUpperAndLower = containsUpperAndLower(password);
+        if(!containsUpperAndLower) {
+            result.addReason("Password must contain an uppercase and lowercase letter.");
+        }
+        boolean isCommonPassword = isCommonPassword(password);
+        if(isCommonPassword) {
+            result.addReason("Password is too weak!");
+        }
+        boolean containsSpecialChar = containsSpecialChar(password, "#$%&(){}*+");
+        if(!containsSpecialChar) {
+            result.addReason("Password must contain at least one special character form :" + "#$%&(){}*+");
+        }
+
+        return result;
     }
 
 
