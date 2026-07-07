@@ -2,9 +2,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MainTest {
+class PasswortValidatorTest {
 
     @Test
-    void test1() {
+    void hasMinLength_shouldReturnFalse_whenCalledWithNull() {
+        String pass = null;
+        boolean actual = PasswortValidator.hasMinLength(pass, 8);
+        assertFalse(actual);
     }
 }
