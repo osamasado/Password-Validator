@@ -25,12 +25,17 @@ public final class PasswortValidator {
             return false;
         }
         char[] passwordChars = password.toCharArray();
+        boolean hasUpper = false;
+        boolean hasLower = false;
         for (char chr : passwordChars) {
             if (Character.isUpperCase(chr)) {
-                return true;
+                hasUpper = true;
+            }
+            else if (Character.isLowerCase(chr)) {
+                hasLower = true;
             }
         }
-        return false;
+        return hasUpper && hasLower;
     }
     public static boolean isCommonPassword(String password) {
         return true;
