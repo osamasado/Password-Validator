@@ -129,27 +129,27 @@ class PasswortValidatorTest {
 
     // =========== isCommonPassword() ===========================
     @Test
-    void isCommonPassword_shouldReturnFalse_whenCalledWithNull() {
-        assertFalse(PasswortValidator.isCommonPassword(null));
+    void isCommonPassword_shouldReturnTrue_whenCalledWithNull() {
+        assertTrue(PasswortValidator.isCommonPassword(null));
     }
 
     @Test
-    void isCommonPassword_shouldReturnFalse_whenCalledWithEmptyString() {
+    void isCommonPassword_shouldReturnTrue_whenCalledWithEmptyString() {
         String pass = "";
         boolean actual = PasswortValidator.isCommonPassword(pass);
-        assertFalse(actual);
+        assertTrue(actual);
     }
     @Test
-    void isCommonPassword_shouldReturnFalse_whenCalledWithWeakPassword() {
+    void isCommonPassword_shouldReturnTrue_whenCalledWithWeakPassword() {
         String pass = "iloveyou";
         boolean actual = PasswortValidator.isCommonPassword(pass);
-        assertFalse(actual);
+        assertTrue(actual);
     }
     @Test
-    void isCommonPassword_shouldReturnTrue_whenCalledWithPasswordNotInBlackList() {
+    void isCommonPassword_shouldReturnFalse_whenCalledWithPasswordNotInBlackList() {
         String pass = "iloveyouJava";
         boolean actual = PasswortValidator.isCommonPassword(pass);
-        assertTrue(actual);
+        assertFalse(actual);
     }
 
     @Test
@@ -208,6 +208,64 @@ class PasswortValidatorTest {
         String pass = "";
         boolean actual = PasswortValidator.isValid(pass);
         assertFalse(actual);
+    }
+
+    // Case 1 Abc1def
+    @Test
+    void isValid_shouldReturnFalse_whenCalledWithAbc1def() {
+        String pass = "Abc1def";
+        boolean actual = PasswortValidator.isValid(pass);
+        assertFalse(actual);
+    }
+    // Case 2 Abc1defg
+    @Test
+    void isValid_shouldReturnFalse_whenCalledWithAbc1defg() {
+        String pass = "Abc1defg";
+        boolean actual = PasswortValidator.isValid(pass);
+        assertFalse(actual);
+    }
+    // Case 3 Abcdefgh
+    @Test
+    void isValid_shouldReturnFalse_whenCalledWithAbcdefgh() {
+        String pass = "Abcdefgh";
+        boolean actual = PasswortValidator.isValid(pass);
+        assertFalse(actual);
+    }
+    // Case 4 abcdefg1
+    @Test
+    void isValid_shouldReturnFalse_whenCalledWithabcdefg1() {
+        String pass = "abcdefg1";
+        boolean actual = PasswortValidator.isValid(pass);
+        assertFalse(actual);
+    }
+    // Case 5 ABCDEFG1
+    @Test
+    void isValid_shouldReturnFalse_whenCalledWithABCDEFG1() {
+        String pass = "ABCDEFG1";
+        boolean actual = PasswortValidator.isValid(pass);
+        assertFalse(actual);
+    }
+    // Case 6 Passwort1
+    @Test
+    void isValid_shouldReturnFalse_whenCalledWithPasswort1() {
+        String pass = "Passwort1";
+        boolean actual = PasswortValidator.isValid(pass);
+        assertFalse(actual);
+    }
+    // Case 7 Abcdef1g
+    @Test
+    void isValid_shouldReturnFalse_whenCalledWithAbcdef1g() {
+        String pass = "Abcdef1g";
+        boolean actual = PasswortValidator.isValid(pass);
+        assertFalse(actual);
+    }
+
+    // Case 8 Abcdef1$
+    @Test
+    void isValid_shouldReturnTrue_whenCalledWithAbcdef1$() {
+        String pass = "Abcdef1$";
+        boolean actual = PasswortValidator.isValid(pass);
+        assertTrue(actual);
     }
 
 }

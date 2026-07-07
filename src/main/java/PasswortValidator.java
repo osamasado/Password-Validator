@@ -42,7 +42,7 @@ public final class PasswortValidator {
     }
     public static boolean isCommonPassword(String password) {
         if(isNullOrEmpty(password)) {
-            return false;
+            return true;
         }
 
         List<String> weakPasswords = List.of(
@@ -62,11 +62,11 @@ public final class PasswortValidator {
 
         for(String pass : weakPasswords) {
             if(password.trim().toLowerCase().compareTo(pass.toLowerCase()) == 0) {
-                return false;
+                return true;
             }
         }
 
-        return true;
+        return false;
     }
 
     public static boolean containsSpecialChar(String password, String allowedChars) {
@@ -82,12 +82,13 @@ public final class PasswortValidator {
 
     public static boolean isValid(String password) {
         boolean isNullOrEmpty = isNullOrEmpty(password);
+        boolean hasMinLength = hasMinLength(password, 8);
+        boolean containsDigit = containsDigit(password);
+        boolean containsUpperAndLower = containsUpperAndLower(password);
+        boolean isCommonPassword = isCommonPassword(password);
+        boolean containsSpecialChar = containsSpecialChar(password, "#$%&(){}*+");
 
-        if (isNullOrEmpty) {
-            return false;
-        }
-
-        return true;
+        return !isNullOrEmpty && hasMinLength && containsDigit && containsUpperAndLower && !isCommonPassword && containsSpecialChar;
     }
 
 
