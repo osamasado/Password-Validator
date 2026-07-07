@@ -4,7 +4,7 @@ public final class PasswortValidator {
         if(password == null || password.isEmpty()) {
             return false;
         }
-        return true;
+        return password.length() >= min;
     }
 
     public static boolean containsDigit(String password) {

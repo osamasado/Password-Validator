@@ -17,4 +17,11 @@ class PasswortValidatorTest {
         boolean actual = PasswortValidator.hasMinLength(pass, 8);
         assertFalse(actual);
     }
+
+    @Test
+    void hasMinLength_shouldReturnFalse_whenCalledWithStringLength7() {
+        String pass = "1234567";
+        boolean actual = PasswortValidator.hasMinLength(pass, 8);
+        assertFalse(actual);
+    }
 }
