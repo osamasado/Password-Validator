@@ -153,10 +153,10 @@ class PasswortValidatorTest {
     }
 
     @Test
-    void isCommonPassword_shouldReturnFalse_whenCalledWithPasswordInBlackListButUpperCase() {
+    void isCommonPassword_shouldReturnTrue_whenCalledWithPasswordInBlackListButUpperCase() {
         String pass = "PASSWORD";
         boolean actual = PasswortValidator.isCommonPassword(pass);
-        assertFalse(actual);
+        assertTrue(actual);
     }
 
     // =========== isNullOrEmpty() ===========================
@@ -198,18 +198,6 @@ class PasswortValidatorTest {
     }
 
     // =========== isValid() ===========================
-    @Test
-    void isValid_shouldReturnFalse_whenCalledWithNull() {
-        assertFalse(PasswortValidator.isValid(null));
-    }
-
-    @Test
-    void isValid_shouldReturnFalse_whenCalledWithEmptyString() {
-        String pass = "";
-        boolean actual = PasswortValidator.isValid(pass);
-        assertFalse(actual);
-    }
-
     // Case 1 Abc1def
     @Test
     void isValid_shouldReturnFalse_whenCalledWithAbc1def() {

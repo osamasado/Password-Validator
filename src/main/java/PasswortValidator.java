@@ -1,6 +1,28 @@
 import java.util.List;
+import java.util.Scanner;
 
 public final class PasswortValidator {
+
+    static void main() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter your password to validate: ");
+        String password = scanner.nextLine();
+
+        ValidationResult result = validatePassword(password);
+
+        if(result.isValid()) {
+            System.out.println("Valid Password");
+        } else {
+            List<String> reasons = result.getReasons();
+
+            for (String reason : reasons ) {
+                System.out.println(reason);
+            }
+        }
+
+
+    }
     public static boolean hasMinLength(String password, int min) {
 
         if(isNullOrEmpty(password)) {
