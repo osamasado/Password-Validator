@@ -79,4 +79,17 @@ class PasswortValidatorTest {
         assertTrue(actual);
     }
 
+    // =========== containsUpperAndLower() ===========================
+    @Test
+    void containsUpperAndLower_shouldReturnFalse_whenCalledWithNull() {
+        assertFalse(PasswortValidator.containsUpperAndLower(null));
+    }
+
+    @Test
+    void containsUpperAndLower_shouldReturnFalse_whenCalledWithEmptyString() {
+        String pass = "";
+        boolean actual = PasswortValidator.containsUpperAndLower(pass);
+        assertFalse(actual);
+    }
+
 }
